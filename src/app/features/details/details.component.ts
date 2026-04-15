@@ -1,3 +1,4 @@
+import { CurrencyPipe } from '@angular/common';
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Product } from '@shared/models/product.interface';
@@ -5,7 +6,7 @@ import { ProductsService } from '@shared/services/products.service';
 
 @Component({
   selector: 'app-details',
-  imports: [],
+  imports: [CurrencyPipe],
   templateUrl: './details.component.html',
   styleUrl: './details.component.css',
 })
@@ -13,7 +14,8 @@ export class DetailsComponent implements OnInit {
   private readonly _activatedRoute = inject(ActivatedRoute);
   private readonly _productsService = inject(ProductsService);
 
-  public product = signal<Product>({} as Product);
+  public product = signal<Product | null>(null);
+  protected readonly starIndexes = [1, 2, 3, 4, 5];
 
   ngOnInit(): void {
     this._activatedRoute.paramMap.subscribe((params) => {
@@ -30,5 +32,17 @@ export class DetailsComponent implements OnInit {
         console.log(err);
       },
     });
+  }
+
+  protected getStarIconClass(rating: number, star: number): string {
+    if (rating >= star) {
+      return 'fas fa-star';
+    }
+
+    if (rating >= star - 0.5) {
+      return 'fas fa-star-half-alt';
+    }
+
+    return 'far fa-star';
   }
 }

@@ -1,10 +1,11 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { Category } from '@shared/models/category.interface';
 import { CategoriesService } from '@shared/services/categories.service';
+import { SectionTitleComponent } from '@shared/components/section-title/section-title.component';
 
 @Component({
   selector: 'app-home-categories',
-  imports: [],
+  imports: [SectionTitleComponent],
   templateUrl: './home-categories.component.html',
   styleUrl: './home-categories.component.css',
 })
