@@ -1,0 +1,38 @@
+.item {
+  background-image: linear-gradient(to right, color-mix(in oklab, var(--color-primary) 85%, transparent), color-mix(in oklab, var(--color-accent) 60%, transparent)), url(/images/home-slider.png);
+  background-size: cover;
+  background-position: center;
+}
+swiper-container::part(button-prev),
+swiper-container::part(button-next) {
+  background-color: rgba(255, 255, 255, 0.95);
+  width: 24px;
+  height: 24px;
+  color: var(--color-primary);
+  padding: 16px;
+  border-radius: 50%;
+  box-shadow: var(--shadow-card);
+  backdrop-filter: blur(8px);
+  transition: all 0.3s ease;
+}
+swiper-container::part(button-prev):hover,
+swiper-container::part(button-next):hover {
+  background-color: white;
+  color: var(--color-primary-strong);
+  transform: scale(1.1);
+  box-shadow: var(--shadow-card-hover);
+}
+swiper-container::part(bullet) {
+  background-color: rgba(255, 255, 255, 0.6);
+  width: 12px;
+  height: 12px;
+  border-radius: 6px;
+  transition: all 0.4s ease;
+}
+swiper-container::part(bullet-active) {
+  background-color: white;
+  width: 36px;
+  height: 12px;
+  border-radius: 6px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+}

@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 @Component({
   selector: 'app-home-slider',
   imports: [],
   templateUrl: './home-slider.component.html',
   styleUrl: './home-slider.component.css',
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class HomeSliderComponent {
   protected readonly benefits = [
