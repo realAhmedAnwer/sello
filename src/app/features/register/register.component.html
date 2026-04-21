@@ -1,1 +1,214 @@
-<p>register works!</p>
+<section
+  class="grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-16 flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+  <!-- !---------------------------------- Left Side  !---------------------------------- -->
+  <div class="w-full lg:w-1/2 space-y-10">
+    <div>
+      <h1 class="text-4xl lg:text-5xl font-extrabold text-secondary tracking-tight mb-4 leading-tight">
+        Welcome to <span class="bg-linear-to-r from-primary to-accent bg-clip-text text-transparent">Sello</span>
+      </h1>
+      <p class="text-lg text-slate-500 leading-relaxed max-w-lg">
+        Join thousands of happy customers who enjoy fresh groceries delivered right to their doorstep.
+      </p>
+    </div>
+
+    <ul class="space-y-5">
+      <li class="flex items-start gap-4 group">
+        <div
+          class="size-12 rounded-2xl bg-primary-soft text-primary grid place-items-center shrink-0 shadow-sm group-hover:shadow-md group-hover:scale-105 transition-all duration-300">
+          <i class="fa-solid fa-star text-lg" aria-hidden="true"></i>
+        </div>
+        <div>
+          <h3 class="text-base font-bold text-secondary">Premium Quality</h3>
+          <p class="text-sm text-slate-500 mt-0.5">
+            Premium quality products sourced from trusted suppliers.
+          </p>
+        </div>
+      </li>
+      <li class="flex items-start gap-4 group">
+        <div
+          class="size-12 rounded-2xl bg-primary-soft text-primary grid place-items-center shrink-0 shadow-sm group-hover:shadow-md group-hover:scale-105 transition-all duration-300">
+          <i class="fa-solid fa-truck-fast text-lg" aria-hidden="true"></i>
+        </div>
+        <div>
+          <h3 class="text-base font-bold text-secondary">Fast Delivery</h3>
+          <p class="text-sm text-slate-500 mt-0.5">Same-day delivery available in most areas</p>
+        </div>
+      </li>
+      <li class="flex items-start gap-4 group">
+        <div
+          class="size-12 rounded-2xl bg-primary-soft text-primary grid place-items-center shrink-0 shadow-sm group-hover:shadow-md group-hover:scale-105 transition-all duration-300">
+          <i class="fa-solid fa-shield-halved text-lg" aria-hidden="true"></i>
+        </div>
+        <div>
+          <h3 class="text-base font-bold text-secondary">Secure Shopping</h3>
+          <p class="text-sm text-slate-500 mt-0.5">Your data and payments are completely secure</p>
+        </div>
+      </li>
+    </ul>
+
+    <figure
+      class="bg-white/80 backdrop-blur-sm rounded-card border border-primary/10 shadow-card p-6 relative overflow-hidden">
+      <div class="absolute top-0 right-0 w-24 h-24 bg-linear-to-bl from-primary/5 to-transparent rounded-bl-full"></div>
+      <figcaption class="flex items-center gap-3 mb-3 relative">
+        <img src="https://i.pravatar.cc/150?img=47" alt="Portrait of Sarah Johnson"
+          class="size-11 rounded-full object-cover ring-2 ring-primary/20 ring-offset-2" />
+        <div>
+          <h4 class="text-sm font-bold text-secondary">Sarah Johnson</h4>
+          <div class="text-amber-400 text-xs flex gap-0.5" aria-label="5 out of 5 stars">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+          </div>
+        </div>
+      </figcaption>
+      <blockquote class="text-sm text-slate-500 italic leading-relaxed relative">
+        "Sello has transformed my shopping experience. The quality of the products is
+        outstanding, and the delivery is always on time. Highly recommend!"
+      </blockquote>
+    </figure>
+  </div>
+
+  <!-- !---------------------------------- Right Side  !---------------------------------- -->
+  <div
+    class="w-full lg:w-1/2 max-w-lg mx-auto lg:mx-0 bg-white/80 backdrop-blur-sm rounded-panel shadow-card border border-primary/10 p-8 sm:p-10 relative overflow-hidden">
+    <!-- Decorative gradient corner -->
+    <div
+      class="absolute -top-16 -right-16 w-48 h-48 bg-linear-to-bl from-primary/8 via-accent/5 to-transparent rounded-full pointer-events-none">
+    </div>
+
+    <div class="text-center mb-8 relative">
+      <div
+        class="inline-flex items-center justify-center size-14 rounded-2xl bg-linear-to-br from-primary to-accent text-white text-xl mb-4 shadow-lg shadow-primary/20">
+        <i class="fa-solid fa-user-plus"></i>
+      </div>
+      <h2 class="text-2xl font-extrabold text-secondary">Create Your Account</h2>
+      <p class="text-sm text-slate-500 mt-2">Start your fresh journey with us today</p>
+    </div>
+
+    <form [formGroup]="registerForm" (ngSubmit)="submitForm()" class="space-y-4 relative">
+      <div>
+        <label for="fullName" class="block text-sm font-semibold text-secondary mb-1.5">Name*</label>
+        <div class="relative">
+          <i class="fa-regular fa-user text-slate-400 absolute left-4 top-1/2 -translate-y-1/2 text-sm"></i>
+          <input formControlName="name" id="fullName" type="text" autocomplete="name" placeholder="Ali"
+            class="w-full pl-11 pr-4 py-3 rounded-card border border-slate-200 outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary text-sm text-secondary placeholder:text-slate-400 bg-white/70" />
+        </div>
+        @let nameControl = registerForm.get('name');
+        @if (nameControl?.touched && nameControl?.invalid) {
+        <div class="mt-1.5 pl-4 flex items-start gap-1.5">
+          @if (nameControl?.hasError('required')) {
+          <p class="text-xs text-danger font-medium flex items-center gap-1"><i
+              class="fa-solid fa-circle-exclamation text-2xs"></i> Name is required.</p>
+          } @else if (nameControl?.hasError('minlength')) {
+          <p class="text-xs text-danger font-medium flex items-center gap-1"><i
+              class="fa-solid fa-circle-exclamation text-2xs"></i> Name must be at least 3 characters.</p>
+          }
+        </div>
+        }
+      </div>
+
+      <div>
+        <label for="email" class="block text-sm font-semibold text-secondary mb-1.5">Email*</label>
+        <div class="relative">
+          <i class="fa-regular fa-envelope text-slate-400 absolute left-4 top-1/2 -translate-y-1/2 text-sm"></i>
+          <input formControlName="email" id="email" type="email" autocomplete="email" placeholder="ali@example.com"
+            class="w-full pl-11 pr-4 py-3 rounded-card border border-slate-200 outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary text-sm text-secondary placeholder:text-slate-400 bg-white/70" />
+        </div>
+        @let emailControl = registerForm.get('email');
+        @if (emailControl?.touched && emailControl?.invalid) {
+        <div class="mt-1.5 pl-4 flex items-start gap-1.5">
+          @if (emailControl?.hasError('required')) {
+          <p class="text-xs text-danger font-medium flex items-center gap-1"><i
+              class="fa-solid fa-circle-exclamation text-2xs"></i> Email is required.</p>
+          } @else if (emailControl?.hasError('email')) {
+          <p class="text-xs text-danger font-medium flex items-center gap-1"><i
+              class="fa-solid fa-circle-exclamation text-2xs"></i> Email is not valid.</p>
+          }
+        </div>
+        }
+      </div>
+
+      <div>
+        <label for="password" class="block text-sm font-semibold text-secondary mb-1.5">Password*</label>
+        <div class="relative">
+          <i class="fa-solid fa-lock text-slate-400 absolute left-4 top-1/2 -translate-y-1/2 text-sm"></i>
+          <input formControlName="password" id="password" type="password" autocomplete="new-password"
+            placeholder="Create a strong password"
+            class="w-full pl-11 pr-4 py-3 rounded-card border border-slate-200 outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary text-sm text-secondary placeholder:text-slate-400 bg-white/70" />
+        </div>
+        @let passwordControl = registerForm.get('password');
+        @if (passwordControl?.touched && passwordControl?.invalid) {
+        <div class="mt-1.5 pl-4 flex items-start gap-1.5">
+          @if (passwordControl?.hasError('required')) {
+          <p class="text-xs text-danger font-medium flex items-center gap-1"><i
+              class="fa-solid fa-circle-exclamation text-2xs"></i> Password is required.</p>
+          } @else if (passwordControl?.hasError('pattern')) {
+          <p class="text-xs text-danger font-medium flex items-center gap-1 leading-relaxed"><i
+              class="fa-solid fa-circle-exclamation text-2xs shrink-0 mt-0.5"></i> Must contain at least 8 chars, 1
+            uppercase, 1 lowercase, 1 number, and 1 special.</p>
+          }
+        </div>
+        }
+      </div>
+
+      <div>
+        <label for="confirmPassword" class="block text-sm font-semibold text-secondary mb-1.5">Confirm Password*</label>
+        <div class="relative">
+          <i class="fa-solid fa-lock text-slate-400 absolute left-4 top-1/2 -translate-y-1/2 text-sm"></i>
+          <input formControlName="rePassword" id="confirmPassword" type="password" autocomplete="new-password"
+            placeholder="Confirm your password"
+            class="w-full pl-11 pr-4 py-3 rounded-card border border-slate-200 outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary text-sm text-secondary placeholder:text-slate-400 bg-white/70" />
+        </div>
+        @let rePasswordControl = registerForm.get('rePassword');
+        @if (rePasswordControl?.touched && rePasswordControl?.invalid) {
+        <div class="mt-1.5 pl-4 flex items-start gap-1.5">
+          @if (rePasswordControl?.hasError('required')) {
+          <p class="text-xs text-danger font-medium flex items-center gap-1"><i
+              class="fa-solid fa-circle-exclamation text-2xs"></i> Please confirm your password.</p>
+          } @else if (rePasswordControl?.hasError('mismatch')) {
+          <p class="text-xs text-danger font-medium flex items-center gap-1"><i
+              class="fa-solid fa-circle-exclamation text-2xs"></i> Passwords do not match.</p>
+          }
+        </div>
+        }
+      </div>
+
+      <div>
+        <label for="phone" class="block text-sm font-semibold text-secondary mb-1.5">Phone Number*</label>
+        <div class="relative">
+          <i class="fa-solid fa-phone text-slate-400 absolute left-4 top-1/2 -translate-y-1/2 text-sm"></i>
+          <input formControlName="phone" id="phone" type="tel" autocomplete="tel" placeholder="+20 123 456 7890"
+            class="w-full pl-11 pr-4 py-3 rounded-card border border-slate-200 outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary text-sm text-secondary placeholder:text-slate-400 bg-white/70" />
+        </div>
+        @let phoneControl = registerForm.get('phone');
+        @if (phoneControl?.touched && phoneControl?.invalid) {
+        <div class="mt-1.5 pl-4 flex items-start gap-1.5">
+          @if (phoneControl?.hasError('required')) {
+          <p class="text-xs text-danger font-medium flex items-center gap-1"><i
+              class="fa-solid fa-circle-exclamation text-2xs"></i> Phone is required.</p>
+          } @else if (phoneControl?.hasError('pattern')) {
+          <p class="text-xs text-danger font-medium flex items-center gap-1"><i
+              class="fa-solid fa-circle-exclamation text-2xs"></i> Please enter a valid Egyptian phone number (e.g.,
+            01012345678).</p>
+          }
+        </div>
+        }
+      </div>
+
+      <div class="pt-3">
+        <button type="submit"
+          class="w-full cursor-pointer bg-linear-to-r from-primary to-primary-strong hover:from-primary-strong hover:to-primary text-white font-bold py-3.5 rounded-card shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30 hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center gap-2">
+          <i class="fa-solid fa-user-plus"></i> Create My Account
+        </button>
+      </div>
+    </form>
+
+    <p class="text-center text-sm text-slate-500 mt-8">
+      Already have an account?
+      <a routerLink="/login"
+        class="text-primary font-bold hover:text-primary-strong hover:underline transition-colors">Sign In</a>
+    </p>
+  </div>
+</section>

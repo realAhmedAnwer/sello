@@ -1,1 +1,171 @@
-<p>login works!</p>
+<section
+  class="grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-7 lg:py-16 flex flex-col lg:flex-row justify-between items-center gap-12 lg:gap-20"
+>
+  <!-- !------------------------- Left Side   !-------------------------  -->
+
+  <div class="w-full lg:w-1/2 flex flex-col items-center text-center space-y-8">
+    <div class="relative rounded-panel overflow-hidden shadow-card">
+      <img
+        src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&q=80&w=800"
+        alt="Fresh Groceries in a Cart"
+        class="w-full max-w-md object-cover aspect-4/3"
+      />
+      <div
+        class="absolute inset-0 bg-linear-to-t from-secondary/40 via-transparent to-transparent"
+      ></div>
+    </div>
+
+    <div class="space-y-4">
+      <h1 class="text-3xl lg:text-4xl font-extrabold text-secondary leading-tight">
+        <span class="bg-linear-to-r from-primary to-accent bg-clip-text text-transparent"
+          >Sello</span
+        >
+        — Your One-Stop Shop for Fresh Products
+      </h1>
+      <p class="text-slate-500 max-w-md mx-auto leading-relaxed">
+        Join thousands of happy customers who trust Sello for their daily grocery needs
+      </p>
+    </div>
+
+    <ul class="flex flex-wrap items-center justify-center gap-6 text-sm font-bold text-secondary">
+      <li class="flex items-center gap-2.5 bg-primary-soft px-4 py-2 rounded-full">
+        <i class="fa-solid fa-truck text-primary"></i> Free Delivery
+      </li>
+      <li class="flex items-center gap-2.5 bg-primary-soft px-4 py-2 rounded-full">
+        <i class="fa-solid fa-shield-halved text-primary"></i> Secure Payment
+      </li>
+      <li class="flex items-center gap-2.5 bg-primary-soft px-4 py-2 rounded-full">
+        <i class="fa-solid fa-clock text-primary"></i> 24/7 Support
+      </li>
+    </ul>
+  </div>
+
+  <!-- !------------------------- Right Side   !-------------------------  -->
+
+  <div
+    class="w-full lg:w-1/2 max-w-lg mx-auto lg:mx-0 bg-white/80 backdrop-blur-sm rounded-panel shadow-card border border-primary/10 p-8 sm:p-10 relative overflow-hidden"
+  >
+    <!-- Decorative gradient corner -->
+    <div
+      class="absolute -top-16 -right-16 w-48 h-48 bg-linear-to-bl from-primary/8 via-accent/5 to-transparent rounded-full pointer-events-none"
+    ></div>
+
+    <div class="text-center mb-8 relative">
+      <div
+        class="inline-flex items-center justify-center size-14 rounded-2xl bg-linear-to-br from-primary to-accent text-white text-xl mb-4 shadow-lg shadow-primary/20"
+      >
+        <i class="fa-solid fa-right-to-bracket"></i>
+      </div>
+      <h2 class="text-2xl font-extrabold text-secondary mb-1">Welcome Back!</h2>
+      <p class="text-sm text-slate-500">Sign in to continue your fresh shopping experience</p>
+    </div>
+
+    <form [formGroup]="loginForm" (ngSubmit)="submitForm()" class="space-y-5">
+      <div>
+        <label for="email" class="block text-sm font-semibold text-secondary mb-1.5"
+          >Email Address</label
+        >
+        <div class="relative">
+          <i
+            class="fa-regular fa-envelope text-slate-400 absolute left-4 top-1/2 -translate-y-1/2 text-sm"
+          ></i>
+          <input
+            formControlName="email"
+            id="email"
+            type="email"
+            autocomplete="email"
+            placeholder="Enter your email"
+            class="w-full pl-11 pr-4 py-3 rounded-card border border-slate-200 outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary text-sm text-secondary placeholder:text-slate-400 bg-white/70"
+          />
+        </div>
+        @let emailControl = loginForm.get('email');
+        @if (emailControl?.touched && emailControl?.invalid) {
+          <div class="mt-1.5 pl-4 flex items-start gap-1.5">
+            @if (emailControl?.hasError('required')) {
+              <p class="text-xs text-danger font-medium flex items-center gap-1">
+                <i class="fa-solid fa-circle-exclamation text-2xs"></i> Email is required.
+              </p>
+            } @else if (emailControl?.hasError('email')) {
+              <p class="text-xs text-danger font-medium flex items-center gap-1">
+                <i class="fa-solid fa-circle-exclamation text-2xs"></i> Email is not valid.
+              </p>
+            }
+          </div>
+        }
+      </div>
+
+      <div>
+        <div class="flex items-center justify-between mb-1.5">
+          <label for="password" class="block text-sm font-semibold text-secondary">Password</label>
+          <a
+            routerLink="/forgot-password"
+            class="text-xs text-primary font-bold hover:text-primary-strong hover:underline transition-colors"
+            >Forgot Password?</a
+          >
+        </div>
+        <div class="relative">
+          <i
+            class="fa-solid fa-lock text-slate-400 absolute left-4 top-1/2 -translate-y-1/2 text-sm"
+          ></i>
+          <input
+            formControlName="password"
+            id="password"
+            type="password"
+            autocomplete="current-password"
+            placeholder="Enter your password"
+            class="w-full pl-11 pr-11 py-3 rounded-card border border-slate-200 outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary text-sm text-secondary placeholder:text-slate-400 bg-white/70"
+          />
+        </div>
+        @let passwordControl = loginForm.get('password');
+        @if (passwordControl?.touched && passwordControl?.invalid) {
+          <div class="mt-1.5 pl-4 flex items-start gap-1.5">
+            @if (passwordControl?.hasError('required')) {
+              <p class="text-xs text-danger font-medium flex items-center gap-1">
+                <i class="fa-solid fa-circle-exclamation text-2xs"></i> Password is required.
+              </p>
+            } @else if (passwordControl?.hasError('pattern')) {
+              <p class="text-xs text-danger font-medium flex items-start gap-1 leading-relaxed">
+                <i class="fa-solid fa-circle-exclamation text-2xs shrink-0 mt-0.5"></i> Must contain
+                at least 8 chars, 1 uppercase, 1 lowercase, 1 number, and 1 special.
+              </p>
+            }
+          </div>
+        }
+      </div>
+
+      <div class="pt-3">
+        <button
+          type="submit"
+          class="w-full cursor-pointer bg-linear-to-r from-primary to-primary-strong hover:from-primary-strong hover:to-primary text-white font-bold py-3.5 rounded-card shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30 hover:-translate-y-0.5 transition-all duration-300"
+        >
+          Sign In
+        </button>
+      </div>
+    </form>
+
+    <div class="mt-8 text-center space-y-5 relative">
+      <p class="text-sm text-slate-500">
+        New to Sello?
+        <a
+          routerLink="/register"
+          class="text-primary font-bold hover:text-primary-strong hover:underline transition-colors"
+          >Create an account</a
+        >
+      </p>
+
+      <div
+        class="flex items-center justify-center gap-5 text-xs text-slate-400 font-medium pt-5 border-t border-primary/8"
+      >
+        <span class="flex items-center gap-1.5"
+          ><i class="fa-solid fa-lock text-primary/50"></i> SSL Secured</span
+        >
+        <span class="flex items-center gap-1.5"
+          ><i class="fa-solid fa-users text-primary/50"></i> 50K+ Users</span
+        >
+        <span class="flex items-center gap-1.5"
+          ><i class="fa-solid fa-star text-primary/50"></i> 4.9 Rating</span
+        >
+      </div>
+    </div>
+  </div>
+</section>
