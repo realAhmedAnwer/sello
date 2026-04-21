@@ -1,5 +1,5 @@
-import { CurrencyPipe } from '@angular/common';
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { CurrencyPipe, isPlatformBrowser } from '@angular/common';
+import { Component, inject, OnInit, PLATFORM_ID, signal } from '@angular/core';
 import { Product } from '@shared/models/product.interface';
 import { ProductsService } from '@shared/services/products.service';
 import { RouterLink } from '@angular/router';
@@ -12,13 +12,16 @@ import { SectionTitleComponent } from '@shared/components/section-title/section-
   styleUrl: './home-products.component.css',
 })
 export class HomeProductsComponent implements OnInit {
+  private readonly _platformId = inject(PLATFORM_ID);
   private readonly _productsService = inject(ProductsService);
 
   public productList = signal<Product[]>([]);
   protected readonly starIndexes = [1, 2, 3, 4, 5];
 
   ngOnInit(): void {
-    this.getAllProducts();
+    if (isPlatformBrowser(this._platformId)) {
+      this.getAllProducts();
+    }
   }
 
   getAllProducts(): void {

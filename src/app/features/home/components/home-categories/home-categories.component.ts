@@ -1,7 +1,8 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, inject, OnInit, PLATFORM_ID, signal } from '@angular/core';
 import { Category } from '@shared/models/category.interface';
 import { CategoriesService } from '@shared/services/categories.service';
 import { SectionTitleComponent } from '@shared/components/section-title/section-title.component';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-home-categories',
@@ -10,6 +11,7 @@ import { SectionTitleComponent } from '@shared/components/section-title/section-
   styleUrl: './home-categories.component.css',
 })
 export class HomeCategoriesComponent implements OnInit {
+  private readonly _platformId = inject(PLATFORM_ID);
   private readonly _categoriesService = inject(CategoriesService);
 
   public categoryList = signal<Category[]>([]);
@@ -49,7 +51,9 @@ export class HomeCategoriesComponent implements OnInit {
   ];
 
   ngOnInit(): void {
-    this.getAllCategories();
+    if (isPlatformBrowser(this._platformId)) {
+      this.getAllCategories();
+    }
   }
 
   getAllCategories(): void {
