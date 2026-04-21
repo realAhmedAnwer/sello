@@ -57,7 +57,10 @@
               >
             </li>
             <li>
-              <a class="block rounded-2xl px-4 py-3 font-medium hover:bg-primary-soft hover:text-primary">Electronics</a>
+              <a
+                class="block rounded-2xl px-4 py-3 font-medium hover:bg-primary-soft hover:text-primary"
+                >Electronics</a
+              >
             </li>
           </ul>
         </div>
@@ -96,20 +99,28 @@
       </button>
 
       <div class="hidden items-center gap-3 pl-2 sm:flex md:border-l md:border-slate-200 md:pl-4">
-        <a
-          routerLink="/login"
-          routerLinkActive="text-primary"
-          class="flex items-center gap-2 rounded-full px-3 py-2 text-sm font-semibold text-slate-700 transition-colors hover:bg-primary-soft hover:text-primary"
-        >
-          <i class="far fa-user text-lg"></i> Sign In
-        </a>
-        <a
-          routerLink="/register"
-          routerLinkActive="text-primary"
-          class="flex items-center gap-2 rounded-full bg-primary px-4 py-2.5 text-sm font-semibold text-white shadow-lg shadow-primary/20 transition-colors hover:bg-primary-strong"
-        >
-          <i class="fas fa-user-plus text-lg"></i> Sign Up
-        </a>
+        @if (isLogged()) {
+          <button
+            class="flex items-center gap-2 rounded-full px-3 py-2 text-sm font-semibold text-slate-700 transition-colors hover:bg-danger/10 hover:text-danger cursor-pointer"
+          >
+            Sign Out <i class="fa-solid fa-arrow-right-from-bracket text-lg"></i>
+          </button>
+        } @else {
+          <a
+            routerLink="/login"
+            routerLinkActive="text-primary"
+            class="flex items-center gap-2 rounded-full px-3 py-2 text-sm font-semibold text-slate-700 transition-colors hover:bg-primary-soft hover:text-primary"
+          >
+            <i class="far fa-user text-lg"></i> Sign In
+          </a>
+          <a
+            routerLink="/register"
+            routerLinkActive="text-primary"
+            class="flex items-center gap-2 rounded-full bg-primary px-4 py-2.5 text-sm font-semibold text-white shadow-lg shadow-primary/20 transition-colors hover:bg-primary-strong"
+          >
+            <i class="fas fa-user-plus text-lg"></i> Sign Up
+          </a>
+        }
       </div>
 
       <button
@@ -187,7 +198,9 @@
       routerLinkActive="text-primary"
       class="group flex cursor-pointer items-center gap-2 rounded-2xl p-2 transition-colors hover:bg-primary-soft"
     >
-      <div class="flex h-11 w-11 items-center justify-center rounded-full bg-primary-soft text-primary">
+      <div
+        class="flex h-11 w-11 items-center justify-center rounded-full bg-primary-soft text-primary"
+      >
         <i class="far fa-heart text-lg"></i>
       </div>
       <span class="font-medium text-slate-700 group-hover:text-primary">Wishlist</span>
@@ -197,7 +210,9 @@
       routerLinkActive="text-primary"
       class="group flex cursor-pointer items-center gap-2 rounded-2xl p-2 transition-colors hover:bg-primary-soft"
     >
-      <div class="flex h-11 w-11 items-center justify-center rounded-full bg-primary-soft text-primary">
+      <div
+        class="flex h-11 w-11 items-center justify-center rounded-full bg-primary-soft text-primary"
+      >
         <i class="fas fa-shopping-cart text-lg"></i>
       </div>
       <span class="font-medium text-slate-700 group-hover:text-primary">My Cart</span>
@@ -223,7 +238,9 @@
       routerLinkActive="text-primary"
       class="group flex cursor-pointer items-center gap-2 rounded-2xl bg-primary px-3 py-3 text-white shadow-lg shadow-primary/20 transition-colors hover:bg-primary-strong"
     >
-      <div class="flex h-11 w-11 items-center justify-center rounded-full bg-white/20 text-white transition-colors">
+      <div
+        class="flex h-11 w-11 items-center justify-center rounded-full bg-white/20 text-white transition-colors"
+      >
         <i class="fas fa-user-plus text-lg"></i>
       </div>
       <span class="font-bold text-white">Sign Up</span>
