@@ -1,0 +1,67 @@
+::ng-deep .ngx-pagination {
+  margin-top: 2rem !important;
+  margin-bottom: 0 !important;
+  padding: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 0.5rem !important;
+}
+
+::ng-deep .ngx-pagination li {
+  display: flex !important;
+  margin: 0 !important;
+}
+
+::ng-deep .ngx-pagination a,
+::ng-deep .ngx-pagination button,
+::ng-deep .ngx-pagination .current,
+::ng-deep .ngx-pagination .disabled span {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-width: 2.75rem !important;
+  height: 2.75rem !important;
+  padding: 0 1rem !important;
+  font-size: 0.875rem !important;
+  font-weight: 700 !important;
+  text-decoration: none !important;
+  transition: all 0.3s ease !important;
+  border-radius: var(--radius-card, 1rem) !important;
+  background: none !important;
+}
+
+::ng-deep .ngx-pagination a {
+  background-color: rgba(255, 255, 255, 0.8) !important;
+  backdrop-filter: blur(4px) !important;
+  border: 1px solid color-mix(in srgb, var(--color-primary) 15%, transparent) !important;
+  color: var(--color-secondary) !important;
+  box-shadow: var(--shadow-sm, 0 1px 2px 0 rgb(0 0 0 / 0.05)) !important;
+}
+
+::ng-deep .ngx-pagination a:hover {
+  background-color: var(--color-primary-soft) !important;
+  color: var(--color-primary) !important;
+  border-color: color-mix(in srgb, var(--color-primary) 30%, transparent) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: var(--shadow-card, 0 10px 40px -10px color-mix(in srgb, var(--color-primary) 15%, transparent)) !important;
+}
+
+::ng-deep .ngx-pagination .current {
+  background: linear-gradient(to right, var(--color-primary), var(--color-primary-strong)) !important;
+  color: white !important;
+  border: none !important;
+  box-shadow: 0 8px 20px -6px color-mix(in srgb, var(--color-primary) 40%, transparent) !important;
+}
+
+::ng-deep .ngx-pagination .disabled span {
+  background-color: rgba(255, 255, 255, 0.5) !important;
+  border: 1px solid #e2e8f0 !important;
+  color: #94a3b8 !important;
+  cursor: not-allowed !important;
+}
+
+::ng-deep .ngx-pagination .pagination-previous::before,
+::ng-deep .ngx-pagination .pagination-next::after {
+  display: none !important;
+}

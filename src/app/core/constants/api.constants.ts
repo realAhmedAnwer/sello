@@ -14,17 +14,18 @@ export const API_ENDPOINTS = {
   cart: {
     addProduct: `${V2}/cart`,
     getProducts: `${V2}/cart`,
-    removeItem: (id: string) => `${V2}/cart/${id}`,
-    updateItemQuantity: (id: string) => `${V2}/cart/${id}`,
+    removeItem: (id: string): string => `${V2}/cart/${id}`,
+    updateItemQuantity: (id: string): string => `${V2}/cart/${id}`,
     clear: `${V2}/cart`,
   },
   order: {
-    cash: (cartId: string) => `${V1}/orders/${cartId}`,
-    card: (cartId: string, url: string) => `${V1}/orders/checkout-session/${cartId}?url=${url}`,
+    cash: (cartId: string): string => `${V1}/orders/${cartId}`,
+    card: (cartId: string, url: string): string =>
+      `${V1}/orders/checkout-session/${cartId}?url=${url}`,
   },
   products: {
-    all: `${V1}/products`,
-    single: (id: string) => `${V1}/products/${id}`,
+    all: (pageNumber: number): string => `${V1}/products?page=${pageNumber}`,
+    single: (id: string): string => `${V1}/products/${id}`,
   },
   categories: {
     all: `${V1}/categories`,

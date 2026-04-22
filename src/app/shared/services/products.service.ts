@@ -9,8 +9,8 @@ import { Observable } from 'rxjs';
 })
 export class ProductsService {
   private readonly _httpClient = inject(HttpClient);
-  getAllProducts(): Observable<any> {
-    return this._httpClient.get(`${environment.baseUrl}/${API_ENDPOINTS.products.all}`);
+  getAllProducts(pageNumber: number = 1): Observable<any> {
+    return this._httpClient.get(`${environment.baseUrl}/${API_ENDPOINTS.products.all(pageNumber)}`);
   }
   getProduct(id: string): Observable<any> {
     return this._httpClient.get(`${environment.baseUrl}/${API_ENDPOINTS.products.single(id)}`);
