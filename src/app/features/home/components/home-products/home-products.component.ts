@@ -7,22 +7,19 @@ import { SectionTitleComponent } from '@shared/components/section-title/section-
 import { CartService } from '@core/services/cart.service';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from '@core/auth/services/auth.service';
+import { ProductCardComponent } from '@shared/components/product-card/product-card.component';
 
 @Component({
   selector: 'app-home-products',
-  imports: [RouterLink, CurrencyPipe, SectionTitleComponent],
+  imports: [SectionTitleComponent, ProductCardComponent],
   templateUrl: './home-products.component.html',
   styleUrl: './home-products.component.css',
 })
 export class HomeProductsComponent implements OnInit {
   private readonly _platformId = inject(PLATFORM_ID);
-  private readonly _toastrService = inject(ToastrService);
-  private readonly _authService = inject(AuthService);
   private readonly _productsService = inject(ProductsService);
-  private readonly _cartService = inject(CartService);
 
   public productList = signal<Product[]>([]);
-  protected readonly starIndexes = [1, 2, 3, 4, 5];
 
   ngOnInit(): void {
     if (isPlatformBrowser(this._platformId)) {
@@ -39,30 +36,5 @@ export class HomeProductsComponent implements OnInit {
         console.log(err);
       },
     });
-  }
-
-  addToCart(id: string): void {
-    this._cartService.addProduct(id).subscribe({
-      next: (res) => {
-        if (this._authService.isLogged()) {
-          this._cartService.cartCount.set(res.numOfCartItems);
-          this._toastrService.success(res.message);
-        } else {
-          this._toastrService.warning('Login to add products to cart.');
-        }
-      },
-    });
-  }
-
-  protected getStarIconClass(rating: number, star: number): string {
-    if (rating >= star) {
-      return 'fas fa-star';
-    }
-
-    if (rating >= star - 0.5) {
-      return 'fas fa-star-half-alt';
-    }
-
-    return 'far fa-star';
   }
 }
