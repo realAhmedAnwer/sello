@@ -4,6 +4,9 @@ import { Product } from '@shared/models/product.interface';
 import { ProductsService } from '@shared/services/products.service';
 import { RouterLink } from '@angular/router';
 import { SectionTitleComponent } from '@shared/components/section-title/section-title.component';
+import { CartService } from '@core/services/cart.service';
+import { ToastrService } from 'ngx-toastr';
+import { AuthService } from '@core/auth/services/auth.service';
 
 @Component({
   selector: 'app-home-products',
@@ -13,7 +16,10 @@ import { SectionTitleComponent } from '@shared/components/section-title/section-
 })
 export class HomeProductsComponent implements OnInit {
   private readonly _platformId = inject(PLATFORM_ID);
+  private readonly _toastrService = inject(ToastrService);
+  private readonly _authService = inject(AuthService);
   private readonly _productsService = inject(ProductsService);
+  private readonly _cartService = inject(CartService);
 
   public productList = signal<Product[]>([]);
   protected readonly starIndexes = [1, 2, 3, 4, 5];
@@ -31,6 +37,24 @@ export class HomeProductsComponent implements OnInit {
       },
       error: (err) => {
         console.log(err);
+      },
+    });
+  }
+
+  addToCart(id: string): void {
+    this._cartService.addProduct(id).subscribe({
+      next: (res) => {
+        if (this._authService.isLogged()) {
+          this._toastrService.success(res.message, '', {
+            progressBar: true,
+            closeButton: true,
+          });
+        } else {
+          this._toastrService.warning('Login to add products to cart.', '', {
+            progressBar: true,
+            closeButton: true,
+          });
+        }
       },
     });
   }

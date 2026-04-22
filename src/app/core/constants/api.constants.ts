@@ -1,20 +1,28 @@
-const API_VERSION = 'api/v1';
+const V1 = 'api/v1';
+const V2 = 'api/v2';
 
 export const API_ENDPOINTS = {
   auth: {
-    signin: `${API_VERSION}/auth/signin`,
-    signup: `${API_VERSION}/auth/signup`,
+    signin: `${V1}/auth/signin`,
+    signup: `${V1}/auth/signup`,
     password: {
-      forgot: `${API_VERSION}/auth/forgotPasswords`,
-      verify: `${API_VERSION}/auth/verifyResetCode`,
-      reset: `${API_VERSION}/auth/resetPassword`,
+      forgot: `${V1}/auth/forgotPasswords`,
+      verify: `${V1}/auth/verifyResetCode`,
+      reset: `${V1}/auth/resetPassword`,
     },
   },
+  cart: {
+    addProduct: `${V2}/cart`,
+    getProducts: `${V2}/cart`,
+    removeItem: (id: string) => `${V2}/cart/${id}`,
+    updateItemQuantity: (id: string) => `${V2}/cart/${id}`,
+    clear: `${V2}/cart`,
+  },
   products: {
-    all: `${API_VERSION}/products`,
-    single: (id: string) => `${API_VERSION}/products/${id}`,
+    all: `${V1}/products`,
+    single: (id: string) => `${V1}/products/${id}`,
   },
   categories: {
-    all: `${API_VERSION}/categories`,
+    all: `${V1}/categories`,
   },
 };
