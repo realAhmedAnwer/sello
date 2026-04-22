@@ -29,4 +29,8 @@ export class NavbarComponent {
       initFlowbite();
     });
   }
+
+  logout(): void {
+    this._authService.signout();
+  }
 }
