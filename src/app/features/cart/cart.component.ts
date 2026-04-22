@@ -32,6 +32,7 @@ export class CartComponent implements OnInit {
   removeItem(id: string): void {
     this._cartService.removeItem(id).subscribe({
       next: (res) => {
+        this._cartService.cartCount.set(res.numOfCartItems);
         this.cart.set(res.data);
       },
     });
@@ -40,6 +41,7 @@ export class CartComponent implements OnInit {
   updateItemCount(id: string, count: number): void {
     this._cartService.updateItemCount(id, count).subscribe({
       next: (res) => {
+        this._cartService.cartCount.set(res.numOfCartItems);
         this.cart.set(res.data);
       },
     });
@@ -48,6 +50,7 @@ export class CartComponent implements OnInit {
   clearCart(): void {
     this._cartService.clear().subscribe({
       next: (res) => {
+        this._cartService.cartCount.set(res.numOfCartItems);
         this.cart.set(res.data);
       },
     });

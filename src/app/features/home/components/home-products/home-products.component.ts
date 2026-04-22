@@ -45,15 +45,10 @@ export class HomeProductsComponent implements OnInit {
     this._cartService.addProduct(id).subscribe({
       next: (res) => {
         if (this._authService.isLogged()) {
-          this._toastrService.success(res.message, '', {
-            progressBar: true,
-            closeButton: true,
-          });
+          this._cartService.cartCount.set(res.numOfCartItems);
+          this._toastrService.success(res.message);
         } else {
-          this._toastrService.warning('Login to add products to cart.', '', {
-            progressBar: true,
-            closeButton: true,
-          });
+          this._toastrService.warning('Login to add products to cart.');
         }
       },
     });

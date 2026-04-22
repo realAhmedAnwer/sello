@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { inject, Injectable } from '@angular/core';
+import { inject, Injectable, signal } from '@angular/core';
 import { API_ENDPOINTS } from '@core/constants/api.constants';
 import { environment } from '@env/environment';
 import { Observable } from 'rxjs';
@@ -9,6 +9,7 @@ import { Observable } from 'rxjs';
 })
 export class CartService {
   private readonly _httpClient = inject(HttpClient);
+  public cartCount = signal<number>(0);
 
   addProduct(productId: string): Observable<any> {
     return this._httpClient.post(`${environment.baseUrl}/${API_ENDPOINTS.cart.addProduct}`, {
