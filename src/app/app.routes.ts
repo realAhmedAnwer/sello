@@ -45,7 +45,7 @@ export const routes: Routes = [
     title: 'Product Details',
   },
   {
-    path: 'checkout',
+    path: 'checkout/:id',
     loadComponent: () =>
       import('./features/checkout/checkout.component').then((m) => m.CheckoutComponent),
     title: 'Checkout',
@@ -57,6 +57,11 @@ export const routes: Routes = [
       import('./features/orders/orders.component').then((m) => m.OrdersComponent),
     title: 'My Orders',
     canActivate: [authGuard],
+  },
+  {
+    path: 'allorders',
+    redirectTo: 'orders',
+    pathMatch: 'full',
   },
   {
     path: 'login',

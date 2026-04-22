@@ -18,6 +18,10 @@ export const API_ENDPOINTS = {
     updateItemQuantity: (id: string) => `${V2}/cart/${id}`,
     clear: `${V2}/cart`,
   },
+  order: {
+    cash: (cartId: string) => `${V1}/orders/${cartId}`,
+    card: (cartId: string, url: string) => `${V1}/orders/checkout-session/${cartId}?url=${url}`,
+  },
   products: {
     all: `${V1}/products`,
     single: (id: string) => `${V1}/products/${id}`,

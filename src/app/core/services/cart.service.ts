@@ -33,7 +33,21 @@ export class CartService {
     );
   }
 
-  clear():Observable<any>{
-    return this._httpClient.delete(`${environment.baseUrl}/${API_ENDPOINTS.cart.clear}`)
+  clear(): Observable<any> {
+    return this._httpClient.delete(`${environment.baseUrl}/${API_ENDPOINTS.cart.clear}`);
+  }
+
+  createCashOrder(cartId: string, data: object): Observable<any> {
+    return this._httpClient.post(
+      `${environment.baseUrl}/${API_ENDPOINTS.order.cash(cartId)}`,
+      data,
+    );
+  }
+
+  createCardOrder(cartId: string, data: object): Observable<any> {
+    return this._httpClient.post(
+      `${environment.baseUrl}/${API_ENDPOINTS.order.card(cartId, environment.appUrl)}`,
+      data,
+    );
   }
 }
