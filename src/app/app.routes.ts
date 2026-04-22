@@ -2,6 +2,8 @@ import { Routes } from '@angular/router';
 import { authGuard } from '@core/auth/guards/auth-guard';
 import { guestGuard } from '@core/auth/guards/guest-guard';
 
+import { cartResolver } from './features/cart/resolvers/cart.resolver';
+
 export const routes: Routes = [
   {
     path: '',
@@ -37,6 +39,7 @@ export const routes: Routes = [
     loadComponent: () => import('./features/cart/cart.component').then((m) => m.CartComponent),
     title: 'Shopping Cart',
     canActivate: [authGuard],
+    resolve: { cartData: cartResolver },
   },
   {
     path: 'details/:id/:slug',

@@ -10,14 +10,14 @@
         <h1>Shopping Cart</h1>
       </div>
       <p class="text-slate-500 text-lg">
-        You have <span class="font-bold text-primary">{{ cart().products.length }} items</span> in
+        You have <span class="font-bold text-primary">{{ cart()?.products?.length || 0 }} items</span> in
         your cart
       </p>
     </div>
 
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
       <div class="lg:col-span-8 flex flex-col gap-5">
-        @for (item of cart().products; track item.product._id) {
+        @for (item of cart()?.products; track item.product._id) {
           <div
             class="flex flex-col sm:flex-row items-center gap-6 border border-primary/10 rounded-card p-5 bg-white/80 backdrop-blur-sm shadow-card hover:shadow-card-hover transition-shadow duration-300"
           >
@@ -152,7 +152,7 @@
               <i class="fa-solid fa-lock text-white/60"></i> Order Summary
             </div>
             <div class="text-sm text-white/80 font-medium">
-              {{ cart().products.length }} items in your cart
+              {{ cart()?.products?.length || 0 }} items in your cart
             </div>
           </div>
 
