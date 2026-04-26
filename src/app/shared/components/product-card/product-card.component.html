@@ -10,23 +10,16 @@
 
     <div class="absolute top-2 right-2 flex flex-col gap-2">
       <button
-        (click)="addToWishlist(product()._id)"
-        class="flex h-10 w-10 items-center justify-center rounded-full border border-white/80 bg-white/90 text-slate-600 shadow-sm transition-all hover:bg-primary hover:text-white"
-      >
-        <i class="far fa-heart"></i>
-      </button>
-
-      <button
-        class="flex h-10 w-10 items-center justify-center rounded-full border border-white/80 bg-white/90 text-slate-600 shadow-sm transition-all hover:bg-primary hover:text-white"
-      >
-        <i class="fas fa-sync-alt"></i>
-      </button>
-
-      <button
         [routerLink]="['/product', product()._id, product().slug]"
         class="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-white/80 bg-white/90 text-slate-600 shadow-sm transition-all hover:bg-primary hover:text-white"
       >
         <i class="far fa-eye"></i>
+      </button>
+      <button
+        (click)="addToWishlist(product()._id)"
+        class="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-white/80 bg-white/90 text-slate-600 shadow-sm transition-all hover:bg-primary hover:text-white"
+      >
+        <i class="far fa-heart"></i>
       </button>
     </div>
   </div>
@@ -62,7 +55,7 @@
 
       <button
         (click)="addToCart(product()._id)"
-        class="flex h-11 w-11 items-center justify-center rounded-2xl bg-primary text-white shadow-lg shadow-primary/20 transition hover:bg-primary-strong active:scale-95"
+        class="flex h-11 w-11 cursor-pointer items-center justify-center rounded-2xl bg-primary text-white shadow-lg shadow-primary/20 transition hover:bg-primary-strong active:scale-95"
       >
         <i class="fas fa-plus"></i>
       </button>
