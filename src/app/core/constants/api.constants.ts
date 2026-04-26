@@ -30,4 +30,7 @@ export const API_ENDPOINTS = {
   categories: {
     all: `${V1}/categories`,
   },
+  brands: {
+    all: `${V1}/brands`,
+  },
 };
