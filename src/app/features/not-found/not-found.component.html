@@ -1,1 +1,116 @@
-<p>not-found works!</p>
+<section class="px-4 py-10 md:px-6 md:py-14">
+  <div class="container max-w-6xl">
+    <div
+      class="grid items-center gap-8 rounded-panel border border-white/70 bg-white/88 p-6 shadow-card-hover backdrop-blur md:p-8 lg:grid-cols-[1.1fr_minmax(0,0.9fr)]"
+    >
+      <div class="space-y-6">
+        <div class="inline-flex items-center gap-3 rounded-full bg-danger/10 px-4 py-2 text-sm font-bold text-danger">
+          <span class="flex h-9 w-9 items-center justify-center rounded-full bg-danger text-white">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+          </span>
+          Error 404
+        </div>
+
+        <div class="space-y-4">
+          <h1 class="text-4xl font-black leading-tight text-secondary md:text-6xl">
+            This page took a wrong turn.
+          </h1>
+          <p class="max-w-2xl text-base leading-7 text-slate-500 md:text-lg">
+            The page you are looking for does not exist, may have been moved, or is no longer
+            available. Let’s get you back to shopping.
+          </p>
+        </div>
+
+        <div class="grid gap-3 sm:grid-cols-2">
+          <a
+            routerLink="/"
+            class="inline-flex items-center justify-center gap-2 rounded-2xl bg-primary px-6 py-4 text-base font-bold text-white shadow-lg shadow-primary/20 transition-all hover:bg-primary-strong hover:-translate-y-0.5"
+          >
+            <i class="fa-solid fa-house"></i>
+            Back to Home
+          </a>
+          <a
+            routerLink="/shop"
+            class="inline-flex items-center justify-center gap-2 rounded-2xl border border-slate-200 bg-white px-6 py-4 text-base font-bold text-slate-700 transition-all hover:border-primary/25 hover:bg-primary-soft"
+          >
+            <i class="fa-solid fa-bag-shopping"></i>
+            Explore Products
+          </a>
+        </div>
+
+        <div class="grid gap-4 pt-4 sm:grid-cols-3">
+          <div class="rounded-card bg-surface-alt p-4">
+            <p class="text-2xs font-bold uppercase tracking-[0.22em] text-slate-400">Quick Link</p>
+            <a routerLink="/categories" class="mt-2 block text-base font-bold text-secondary hover:text-primary">
+              Browse Categories
+            </a>
+          </div>
+          <div class="rounded-card bg-surface-alt p-4">
+            <p class="text-2xs font-bold uppercase tracking-[0.22em] text-slate-400">Popular Stop</p>
+            <a routerLink="/brands" class="mt-2 block text-base font-bold text-secondary hover:text-primary">
+              Discover Brands
+            </a>
+          </div>
+          <div class="rounded-card bg-surface-alt p-4">
+            <p class="text-2xs font-bold uppercase tracking-[0.22em] text-slate-400">Continue</p>
+            <a routerLink="/cart" class="mt-2 block text-base font-bold text-secondary hover:text-primary">
+              Review Cart
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="relative">
+        <div
+          class="relative overflow-hidden rounded-panel bg-[linear-gradient(135deg,#10b981_0%,#14b8a6_50%,#06b6d4_100%)] p-8 text-white shadow-[0_30px_80px_rgba(20,184,166,0.24)]"
+        >
+          <div class="absolute -right-10 -top-10 h-36 w-36 rounded-full bg-white/10"></div>
+          <div class="absolute right-10 top-20 h-14 w-14 rounded-full bg-white/10"></div>
+          <div class="absolute -bottom-10 left-10 h-28 w-28 rounded-full border border-white/15 bg-white/8"></div>
+
+          <div class="relative z-10">
+            <div
+              class="mx-auto flex h-28 w-28 items-center justify-center rounded-full border border-white/20 bg-white/12 backdrop-blur-sm"
+            >
+              <span class="text-6xl font-black tracking-tight">404</span>
+            </div>
+
+            <div class="mt-8 space-y-4 text-center">
+              <h2 class="text-2xl font-bold">We couldn’t find that path.</h2>
+              <p class="text-sm leading-6 text-white/85">
+                Try heading back to the home page, open the shop, or jump into a category to keep
+                exploring Sello.
+              </p>
+            </div>
+
+            <div class="mt-8 grid gap-3">
+              <div class="rounded-card border border-white/15 bg-white/10 p-4 backdrop-blur-sm">
+                <div class="flex items-center gap-3">
+                  <div class="flex h-11 w-11 items-center justify-center rounded-full bg-white/14 text-lg">
+                    <i class="fa-solid fa-truck-fast"></i>
+                  </div>
+                  <div class="text-left">
+                    <p class="font-bold">Fast return to shopping</p>
+                    <p class="text-sm text-white/75">Your next product is only a click away.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="rounded-card border border-white/15 bg-white/10 p-4 backdrop-blur-sm">
+                <div class="flex items-center gap-3">
+                  <div class="flex h-11 w-11 items-center justify-center rounded-full bg-white/14 text-lg">
+                    <i class="fa-solid fa-shield-halved"></i>
+                  </div>
+                  <div class="text-left">
+                    <p class="font-bold">Protected shopping flow</p>
+                    <p class="text-sm text-white/75">Your saved cart and wishlist stay intact.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
