@@ -23,10 +23,14 @@ export class NavbarComponent {
 
   ngOnInit(): void {
     if (isPlatformBrowser(this._platformId)) {
-      if (localStorage.getItem('accessToken')) {
+      const token = localStorage.getItem('accessToken');
+
+      if (token) {
         this._authService.isLogged.set(true);
+        this.loadCartCount();
+      } else {
+        this._cartService.cartCount.set(0);
       }
-      this._cartService.cartCount.set(this.getCartCount());
     }
     this.flowbiteService.loadFlowbite((flowbite) => {
       initFlowbite();
@@ -37,12 +41,11 @@ export class NavbarComponent {
     this._authService.signout();
   }
 
-  getCartCount(): number {
+  loadCartCount(): void {
     this._cartService.getUserCart().subscribe({
       next: (res) => {
-        return res.numOfCartItems;
+        this._cartService.cartCount.set(res.numOfCartItems);
       },
     });
-    return 0;
   }
 }

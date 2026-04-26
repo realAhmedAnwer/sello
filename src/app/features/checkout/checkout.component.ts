@@ -29,10 +29,7 @@ export class CheckoutComponent implements OnInit {
   }
 
   getCartId(): string {
-    this._activatedRoute.paramMap.subscribe((params) => {
-      return params.get('id');
-    });
-    return '';
+    return this._activatedRoute.snapshot.paramMap.get('id') ?? '';
   }
 
   changePaymentMethod(element: HTMLInputElement): void {
@@ -41,6 +38,10 @@ export class CheckoutComponent implements OnInit {
 
   submitForm(): void {
     if (this.checkoutForm.valid) {
+      if (!this.cartId()) {
+        return;
+      }
+
       if (this.paymentMethod() === 'cash') {
         this._cartService.createCashOrder(this.cartId(), this.checkoutForm.value).subscribe({
           next: (res) => {

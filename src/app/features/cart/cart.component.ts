@@ -23,6 +23,16 @@ export class CartComponent implements OnInit {
         next: (res) => {
           if (res['cartData'] && res['cartData'].data) {
             this.cart.set(res['cartData'].data);
+            return;
+          }
+
+          if (localStorage.getItem('accessToken')) {
+            this._cartService.getUserCart().subscribe({
+              next: (cartRes) => {
+                this.cart.set(cartRes.data);
+                this._cartService.cartCount.set(cartRes.numOfCartItems);
+              },
+            });
           }
         },
       });
