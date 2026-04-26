@@ -42,9 +42,9 @@ export const routes: Routes = [
     resolve: { cartData: cartResolver },
   },
   {
-    path: 'details/:id/:slug',
+    path: 'product/:id/:slug',
     loadComponent: () =>
-      import('./features/details/details.component').then((m) => m.DetailsComponent),
+      import('./features/product/product.component').then((m) => m.ProductComponent),
     title: 'Product Details',
   },
   {
