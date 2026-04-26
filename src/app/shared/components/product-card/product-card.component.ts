@@ -1,6 +1,6 @@
 import { Product } from '@shared/models/product.interface';
 import { Component, inject, input } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '@core/auth/services/auth.service';
 import { CartService } from '@core/services/cart.service';
 import { WishlistService } from '@core/services/wishlist.service';
@@ -18,18 +18,20 @@ export class ProductCardComponent {
   private readonly _authService = inject(AuthService);
   private readonly _cartService = inject(CartService);
   private readonly _wishlistService = inject(WishlistService);
+  private readonly _router = inject(Router);
   protected readonly starIndexes = [1, 2, 3, 4, 5];
   public product = input.required<Product>();
 
   addToCart(id: string): void {
+    if (!this._authService.isLogged()) {
+      this._router.navigate(['/login']);
+      return;
+    }
+
     this._cartService.addProduct(id).subscribe({
       next: (res) => {
-        if (this._authService.isLogged()) {
-          this._cartService.cartCount.set(res.numOfCartItems);
-          this._toastrService.success(res.message);
-        } else {
-          this._toastrService.warning('Login to add products to cart.');
-        }
+        this._cartService.cartCount.set(res.numOfCartItems);
+        this._toastrService.success(res.message);
       },
     });
   }

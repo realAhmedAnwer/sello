@@ -1,6 +1,6 @@
 import { CurrencyPipe } from '@angular/common';
 import { Component, inject, OnInit, signal } from '@angular/core';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { AuthService } from '@core/auth/services/auth.service';
 import { CartService } from '@core/services/cart.service';
 import { WishlistService } from '@core/services/wishlist.service';
@@ -21,6 +21,7 @@ export class ProductComponent implements OnInit {
   private readonly _authService = inject(AuthService);
   private readonly _wishlistService = inject(WishlistService);
   private readonly _toastrService = inject(ToastrService);
+  private readonly _router = inject(Router);
 
   public product = signal<Product | null>(null);
   public activeImage = signal<string>('');
@@ -49,14 +50,15 @@ export class ProductComponent implements OnInit {
   }
 
   addToCart(id: string): void {
+    if (!this._authService.isLogged()) {
+      this._router.navigate(['/login']);
+      return;
+    }
+
     this._cartService.addProduct(id).subscribe({
       next: (res) => {
-        if (this._authService.isLogged()) {
-          this._cartService.cartCount.set(res.numOfCartItems);
-          this._toastrService.success(res.message);
-        } else {
-          this._toastrService.warning('Login to add products to cart.');
-        }
+        this._cartService.cartCount.set(res.numOfCartItems);
+        this._toastrService.success(res.message);
       },
     });
   }
