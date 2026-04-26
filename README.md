@@ -1,59 +1,116 @@
 # Sello
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.7.
+## Scope 🌐
 
-## Development server
+Sello is a modern e-commerce web application built with Angular and styled with Tailwind CSS. It delivers a smooth shopping experience where users can browse products, explore brands and categories, manage their cart and wishlist, and complete orders through an integrated checkout flow.
 
-To start a local development server, run:
+## ✨ Features
+
+### Authenticated Experience
+
+Secure Authentication: Fully integrated register and login system connected to the API using token-based authentication.
+
+Protected Shopping Actions: Authenticated users can access private routes such as cart, wishlist, checkout, and orders.
+
+Account Access Flow: Includes login, registration, and forgot password screens for a complete user entry experience.
+
+### Shopping Experience
+
+Product Discovery: Browse products from the shop page with clean product cards and detailed product pages.
+
+Category and Brand Browsing: Explore the catalog through dedicated categories and brands views.
+
+Responsive Storefront: Built to provide a polished experience across desktop and mobile layouts.
+
+### Cart, Wishlist, and Orders
+
+Cart Management: Add products to cart, update item quantities, remove specific items, and clear the cart.
+
+Wishlist Support: Save products to a personal wishlist for later review.
+
+Checkout Flow: Place orders through a dedicated checkout page with support for cash and card payment flows.
+
+Orders Page: View submitted orders from a protected account area.
+
+### UI and User Feedback
+
+Live Cart Feedback: Cart count is reflected in the navigation for a smoother shopping flow.
+
+Toast Notifications: User actions and API responses are surfaced clearly with toast messages.
+
+Loading States: The app uses loading feedback to improve perceived responsiveness during async operations.
+
+## 🛠️ Technology Stack
+
+Framework: Angular 21 with modern standalone components and Angular SSR support.
+
+Language: TypeScript.
+
+Styling: Tailwind CSS 4 for responsive and utility-first UI styling.
+
+Routing: Angular Router with guarded authenticated routes and route resolvers.
+
+Forms: Reactive Forms for robust validation and form handling.
+
+State Handling: Angular Signals for lightweight local reactive state such as authentication and cart count.
+
+HTTP & Async: Angular HttpClient with RxJS for API integration and reactive flows.
+
+Icons: Font Awesome.
+
+UI Libraries: Flowbite, ngx-toastr, ngx-spinner, ngx-pagination, and Swiper.
+
+Server Runtime: Express for SSR serving.
+
+Architecture: TypeScript path aliases such as `@core/`, `@shared/`, and `@env/` for cleaner imports.
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+Make sure you have Node.js and npm installed on your machine.
+
+### Installation
+
+Clone the repository and navigate to the project root.
 
 ```bash
+git clone <repository-url>
+cd sello
+```
+
+Install the application dependencies:
+
+```bash
+npm install
+```
+
+### Development Server
+
+To start the local development server, run:
+
+```bash
+npm start
+# OR
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-## Code scaffolding
+### Build
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+To build the project for production, run:
 
 ```bash
-ng generate --help
+npm run build
 ```
 
-## Building
+This will compile the application and store the optimized build artifacts in the `dist/` directory.
 
-To build the project run:
+### Test
+
+To run the test suite, use:
 
 ```bash
-ng build
+npm test
 ```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
