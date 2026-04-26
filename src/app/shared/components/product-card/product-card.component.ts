@@ -3,6 +3,7 @@ import { Component, inject, input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { AuthService } from '@core/auth/services/auth.service';
 import { CartService } from '@core/services/cart.service';
+import { WishlistService } from '@core/services/wishlist.service';
 import { ToastrService } from 'ngx-toastr';
 import { CurrencyPipe } from '@angular/common';
 
@@ -16,6 +17,7 @@ export class ProductCardComponent {
   private readonly _toastrService = inject(ToastrService);
   private readonly _authService = inject(AuthService);
   private readonly _cartService = inject(CartService);
+  private readonly _wishlistService = inject(WishlistService);
   protected readonly starIndexes = [1, 2, 3, 4, 5];
   public product = input.required<Product>();
 
@@ -27,6 +29,19 @@ export class ProductCardComponent {
           this._toastrService.success(res.message);
         } else {
           this._toastrService.warning('Login to add products to cart.');
+        }
+      },
+    });
+  }
+
+  addToWishlist(id: string): void {
+    this._wishlistService.addProduct(id).subscribe({
+      next: (res) => {
+        if (this._authService.isLogged()) {
+          this._wishlistService.wishlistCount.set(res.data?.length ?? this._wishlistService.wishlistCount());
+          this._toastrService.success(res.message);
+        } else {
+          this._toastrService.warning('Login to save products to wishlist.');
         }
       },
     });

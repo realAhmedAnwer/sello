@@ -3,6 +3,7 @@ import { Component, inject, OnInit, signal } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { AuthService } from '@core/auth/services/auth.service';
 import { CartService } from '@core/services/cart.service';
+import { WishlistService } from '@core/services/wishlist.service';
 import { Product } from '@shared/models/product.interface';
 import { ProductsService } from '@shared/services/products.service';
 import { ToastrService } from 'ngx-toastr';
@@ -18,6 +19,7 @@ export class ProductComponent implements OnInit {
   private readonly _productsService = inject(ProductsService);
   private readonly _cartService = inject(CartService);
   private readonly _authService = inject(AuthService);
+  private readonly _wishlistService = inject(WishlistService);
   private readonly _toastrService = inject(ToastrService);
 
   public product = signal<Product | null>(null);
@@ -54,6 +56,19 @@ export class ProductComponent implements OnInit {
           this._toastrService.success(res.message);
         } else {
           this._toastrService.warning('Login to add products to cart.');
+        }
+      },
+    });
+  }
+
+  addToWishlist(id: string): void {
+    this._wishlistService.addProduct(id).subscribe({
+      next: (res) => {
+        if (this._authService.isLogged()) {
+          this._wishlistService.wishlistCount.set(res.data?.length ?? this._wishlistService.wishlistCount());
+          this._toastrService.success(res.message);
+        } else {
+          this._toastrService.warning('Login to save products to wishlist.');
         }
       },
     });

@@ -33,4 +33,9 @@ export const API_ENDPOINTS = {
   brands: {
     all: `${V1}/brands`,
   },
+  wishlist: {
+    addProduct: `${V1}/wishlist`,
+    getProducts: `${V1}/wishlist`,
+    removeItem: (id: string): string => `${V1}/wishlist/${id}`,
+  },
 };
