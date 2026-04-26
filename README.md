@@ -112,11 +112,3 @@ npm run build
 ```
 
 This will compile the application and store the optimized build artifacts in the `dist/` directory.
-
-### Test
-
-To run the test suite, use:
-
-```bash
-npm test
-```
