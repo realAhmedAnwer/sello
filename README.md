@@ -1,10 +1,10 @@
 # Sello
 
-## Scope 🌐
+## Scope
 
-Sello is a modern e-commerce web application built with Angular and styled with Tailwind CSS. It delivers a smooth shopping experience where users can browse products, explore brands and categories, manage their cart and wishlist, and complete orders through an integrated checkout flow.
+Sello is a modern e-commerce web application built with Angular and styled with Tailwind CSS. It delivers a smooth shopping experience where users can browse products, explore brands and categories, save favorites to a wishlist, manage their cart, and complete orders through an integrated checkout flow.
 
-## ✨ Features
+## Features
 
 ### Authenticated Experience
 
@@ -16,7 +16,9 @@ Account Access Flow: Includes login, registration, and forgot password screens f
 
 ### Shopping Experience
 
-Product Discovery: Browse products from the shop page with clean product cards and detailed product pages.
+Product Discovery: Browse products from the shop page with interactive product cards and quick actions.
+
+Dedicated Product Page: Open any product in a full product details page with gallery thumbnails, pricing, ratings, stock information, and direct cart or wishlist actions.
 
 Category and Brand Browsing: Explore the catalog through dedicated categories and brands views.
 
@@ -26,7 +28,7 @@ Responsive Storefront: Built to provide a polished experience across desktop and
 
 Cart Management: Add products to cart, update item quantities, remove specific items, and clear the cart.
 
-Wishlist Support: Save products to a personal wishlist for later review.
+Wishlist Support: Save products to a personal wishlist, remove them later, or move them into the cart.
 
 Checkout Flow: Place orders through a dedicated checkout page with support for cash and card payment flows.
 
@@ -40,7 +42,9 @@ Toast Notifications: User actions and API responses are surfaced clearly with to
 
 Loading States: The app uses loading feedback to improve perceived responsiveness during async operations.
 
-## 🛠️ Technology Stack
+Modern Product Cards: Cards include wishlist and product view actions, pricing, ratings, and direct add-to-cart access.
+
+## Technology Stack
 
 Framework: Angular 21 with modern standalone components and Angular SSR support.
 
@@ -52,9 +56,9 @@ Routing: Angular Router with guarded authenticated routes and route resolvers.
 
 Forms: Reactive Forms for robust validation and form handling.
 
-State Handling: Angular Signals for lightweight local reactive state such as authentication and cart count.
+State Handling: Angular Signals for lightweight local reactive state such as authentication, cart count, and wishlist count.
 
-HTTP & Async: Angular HttpClient with RxJS for API integration and reactive flows.
+HTTP and Async: Angular HttpClient with RxJS for API integration and reactive flows.
 
 Icons: Font Awesome.
 
@@ -64,7 +68,9 @@ Server Runtime: Express for SSR serving.
 
 Architecture: TypeScript path aliases such as `@core/`, `@shared/`, and `@env/` for cleaner imports.
 
-## 🚀 Getting Started
+Backend API: Route E-Commerce API for authentication, products, brands, categories, cart, wishlist, checkout, and orders.
+
+## Getting Started
 
 ### Prerequisites
 
